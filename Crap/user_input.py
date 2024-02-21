@@ -3,24 +3,6 @@ import datetime
 from datetime import timedelta
 
 
-# user options menu will go here
-def main_menu():
-     print('what would you like to do?')
-     user = input(
-          """
-1. add a new client
-2. update client data
-3. check upcoming reports
-4. delete client
-""")
-     if int(user) == 1:
-          client_add()
-     elif int(user) == 2:
-          print('you chose 2')
-     elif int(user) == 3:
-          print('you chose 3')
-     elif int(user) == 4:
-          print('you chose 4')
           
 
 
