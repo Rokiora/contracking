@@ -16,7 +16,7 @@ def client_add():
     uend = datetime.datetime.strptime(input('Enter contract end date (dd mm yy): '), "%d %m %y").date().strftime("%d-%m-%y")
     uvine = input('Has the vineland been conducted?: ')
     uclinint = input('Has the clinical interview been conducted?: ')
-    ureport_due = uend - timedelta(weeks=6)
+    ureport_due = 'place hold'#uend - timedelta(weeks=6)
     usubmitted = input('Have you submitted this report to the regional clinical director?')
 
     ucodes = []

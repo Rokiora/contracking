@@ -14,9 +14,9 @@ def main():
 
 # main loop
     while True: # may need to change this loop, perhaps replaced with a function? for simplicity? function should handl options (add client, update client, etc.)
-        print('what would you like to do?')
         user = input(
           """
+what would you like to do?
 1. add a new client
 2. update client data
 3. check upcoming reports
@@ -25,7 +25,7 @@ def main():
         if int(user) == 1:
              client_data = client_add().__dict__
              db.insert_client(client_data)
-
+             print(f'\nyou have added {client_data["name"]}')
         elif int(user) == 2:
              print('you chose 2')
         elif int(user) == 3:
