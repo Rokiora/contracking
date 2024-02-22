@@ -12,11 +12,11 @@ from datetime import timedelta
 #strftime converts object to desired string format
 def client_add():
     uname = input('Enter client pseudonym: ')
-    ustart = datetime.datetime.strptime(input('Enter contract start date (dd mm yy): '), "%d %m %y").date().strftime("%d-%m-%y")
-    uend = datetime.datetime.strptime(input('Enter contract end date (dd mm yy): '), "%d %m %y").date().strftime("%d-%m-%y")
+    ustart = datetime.datetime.strptime(input('Enter contract start date (mm dd yy): '), "%m %d %y").date().strftime("%m-%d-%y")
+    uend = datetime.datetime.strptime(input('Enter contract end date (mm dd yy): '), "%m %d %y").date().strftime("%m-%d-%y")
     uvine = input('Has the vineland been conducted?: ')
     uclinint = input('Has the clinical interview been conducted?: ')
-    ureport_due = 'place hold'#uend - timedelta(weeks=6)
+    ureport_due = (datetime.datetime.strptime(uend, "%m-%d-%y" ) - timedelta(weeks=6)).date().strftime("%m-%d-%y")
     usubmitted = input('Have you submitted this report to the regional clinical director?')
 
     ucodes = []
