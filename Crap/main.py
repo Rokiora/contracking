@@ -23,24 +23,24 @@ what would you like to do?
 4. delete client
 """)
         if int(user) == 1:
-             client_data = client_add().__dict__
-             db.insert_client(client_data)
-             print(f'\nyou have added {client_data["name"]}')
+             client_data = client_add().__dict__ # client_data = client_info().__dict__ # store client_info function return from user_input.py in client_data
+             db.insert_client(client_data) # db.insert_client(client_data) # pass client data as dictionary into insert_client method from database.py
+             print(f'\nyou have added {client_data["name"]}') # indicate which client has been added
         elif int(user) == 2:
              print('you chose 2')
         elif int(user) == 3:
-             print('you chose 3')
+             upcoming = db.collection.find().sort("report_due", 1) # sort clients by report due date starting from the most recent
+             for client in upcoming:
+                 print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients 
+# ^ maybe limit to show only 3? instead of the whole
         elif int(user) == 4:
           print('you chose 4')
-       # client_data = client_info().__dict__ # store client_info function return from user_input.py in client_data
-       # db.insert_client(client_data) # pass client data as dictionary into insert_client method from database.py
-       # user = input('would you like to add another client?') # ask user to add another
 
 # exit contingency
-       # if user.lower() == 'no': 
-       #     print('we are done here')
-       #     break
-
+        elif user.lower() == 'no': 
+            print('we are done here')
+            break
+    
 # user options menu will go here
 
 if __name__ == "__main__":
