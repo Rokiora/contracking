@@ -12,4 +12,6 @@ class Database:
     def insert_client(self, client_data):
         self.collection.insert_one(client_data)
 
+        
+
 # update method will go here
