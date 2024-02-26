@@ -34,13 +34,15 @@ what would you like to do?
              if db.collection.count_documents({}) >= 3:
                  for i in range(3):
                      client = upcoming[i]
-                     print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients 
+                     print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients and due dates
              else:
                 for client in upcoming:
-                 print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients 
-# ^ maybe limit to show only 3? instead of the whole
+                 print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients and due dates
         elif int(user) == 4:
-          print('you chose 4')
+            select = input('Which client would you like to delete? ')
+            query = {'name':f'{select}'}
+            db.collection.delete_one(query)
+            print(f'{select} has been deleted')
 
 # exit contingency
         elif int(user) == 5: 
