@@ -24,24 +24,25 @@ what would you like to do?
 5. exit
 """)
         if int(user) == 1:
-             client_data = client_add().__dict__ # client_data = client_info().__dict__ # store client_info function return from user_input.py in client_data
-             db.insert_client(client_data) # db.insert_client(client_data) # pass client data as dictionary into insert_client method from database.py
-             print(f'\nyou have added {client_data["name"]}') # indicate which client has been added
+            client_data = client_add().__dict__ # client_data = client_info().__dict__ # store client_info function return from user_input.py in client_data
+            db.insert_client(client_data) # db.insert_client(client_data) # pass client data as dictionary into insert_client method from database.py
+            print(f'\nyou have added {client_data["name"]}') # indicate which client has been added
         elif int(user) == 2:
-             who = input('who would you like to edit? ')
-             myquery = {'name': f'{who}'}
-             what = input('would you like to update the contract "c" or utilization "u" ?') # consider fields such as vineland and clinical interview
+            query
+            who = input('who would you like to edit? ')
+            myquery = {'name': f'{who}'}
+            what = input('would you like to update the contract "c" or utilization "u" ?') # consider fields such as vineland and clinical interview
         elif int(user) == 3:
-             upcoming = db.collection.find().sort("report_due", 1) # sort clients by report due date starting from the most recent
-             if db.collection.count_documents({}) >= 3:
-                 for i in range(3):
-                     client = upcoming[i]
-                     print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients and due dates
-             elif db.collection.count_documents({}) == 0:
-                 print('there are no clients')
-             else:
-                 for client in upcoming:
-                     print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients and due dates
+            upcoming = db.collection.find().sort("report_due", 1) # sort clients by report due date starting from the most recent
+            if db.collection.count_documents({}) >= 3:
+                for i in range(3):
+                    client = upcoming[i]
+                    print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients and due dates
+            elif db.collection.count_documents({}) == 0:
+                print('there are no clients')
+            else:
+                for client in upcoming:
+                    print(f'{client["name"]} is due {client["report_due"]}') # print the list of clients and due dates
         elif int(user) == 4:
             select = input('Which client would you like to delete? ')
             query = {'name':f'{select}'}
