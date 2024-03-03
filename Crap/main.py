@@ -28,10 +28,17 @@ what would you like to do?
             db.insert_client(client_data) # db.insert_client(client_data) # pass client data as dictionary into insert_client method from database.py
             print(f'\nyou have added {client_data["name"]}') # indicate which client has been added
         elif int(user) == 2:
-            query
             who = input('who would you like to edit? ')
             myquery = {'name': f'{who}'}
-            what = input('would you like to update the contract "c" or utilization "u" ?') # consider fields such as vineland and clinical interview
+            if db.collection.find_one(myquery):
+                print('what would you like to edit?')
+                for key in db.collection.find_one(myquery):
+                    print(key)
+                print('')
+                selection = input('')
+                # what = input('would you like to update the contract "c" or utilization "u" ?') # consider fields such as vineland and clinical interview
+            else:
+                print('that client does not exist')
         elif int(user) == 3:
             upcoming = db.collection.find().sort("report_due", 1) # sort clients by report due date starting from the most recent
             if db.collection.count_documents({}) >= 3:
