@@ -32,10 +32,10 @@ what would you like to do?
             myquery = {'name': f'{who}'}
             if db.collection.find_one(myquery):
                 print('what would you like to edit?')
-                for key in db.collection.find_one(myquery):
-                    print(key)
+                for index, key in enumerate(db.collection.find_one(myquery)):
+                    print(index,key)
                 print('')
-                selection = input('')
+                #selection = input('')
                 # what = input('would you like to update the contract "c" or utilization "u" ?') # consider fields such as vineland and clinical interview
             else:
                 print('that client does not exist')
